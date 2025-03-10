@@ -11,7 +11,7 @@ public class Turismo extends Vehiculo {
 	
 	public Turismo(long id, String matricula, LocalDate fechaMatriculacion, TipoMotor motor, double potencia) {
 		super(id, matricula, fechaMatriculacion, motor);
-		//TODO
+		this.potencia = potencia;
 	}
 
 	/**
@@ -23,8 +23,23 @@ public class Turismo extends Vehiculo {
 
 	@Override
 	public double precioImpuesto() {
-		//TODO
-		return 0;
+		double potenciaEnCaballosFiscales = getPotencia();
+		
+		if (potenciaEnCaballosFiscales < 8) {
+			return 25;
+		}
+		else if (potenciaEnCaballosFiscales >= 8 && potenciaEnCaballosFiscales < 12) {
+			return 67;
+		}
+		else if (potenciaEnCaballosFiscales >= 12 && potenciaEnCaballosFiscales < 16) {
+			return 143;
+		}
+		else if (potenciaEnCaballosFiscales >= 16 && potenciaEnCaballosFiscales < 20) {
+			return 178;
+		}
+		else {
+			return 223;
+		}
 	}
 
 }

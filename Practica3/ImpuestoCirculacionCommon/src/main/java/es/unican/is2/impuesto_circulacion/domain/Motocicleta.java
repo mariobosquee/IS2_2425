@@ -13,7 +13,7 @@ public class Motocicleta extends Vehiculo {
 
 	public Motocicleta(long id, String matricula, LocalDate fechaMatriculacion, TipoMotor motor, int cilindrada) {
 		super(id, matricula, fechaMatriculacion, motor);
-		//TODO
+		this.cilindrada = cilindrada;
 	}
 
 	/**
@@ -25,8 +25,23 @@ public class Motocicleta extends Vehiculo {
 
 	@Override
 	public double precioImpuesto() {
-		//TODO
-		return 0;
+		int cilindradaEnCC = getCilindrada();
+		
+		if (cilindradaEnCC <= 125) {
+			return 8;
+		}
+		else if (cilindradaEnCC > 125 && cilindradaEnCC <= 250) {
+			return 15;
+		}
+		else if (cilindradaEnCC > 250 && cilindradaEnCC <= 500) {
+			return 30;
+		}
+		else if (cilindradaEnCC > 500 && cilindradaEnCC <= 1000) {
+			return 60;
+		}
+		else {
+			return 120;
+		}
 	}
 
 }
