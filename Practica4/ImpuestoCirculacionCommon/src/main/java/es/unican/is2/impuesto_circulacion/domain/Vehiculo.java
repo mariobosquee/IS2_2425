@@ -52,5 +52,22 @@ public abstract class Vehiculo {
 	}
 
 	public abstract double precioImpuesto();
+	
+	protected double aplicarDescuento(double importe) {
+		if (fechaMatriculacion.plusYears(25).isBefore(LocalDate.now())) {
+			importe = importe * 0.0;
+		}		
+		else if (motor == TipoMotor.ELECTRICO) {
+			importe = importe * 0.25;
+		}
+		else if (motor == TipoMotor.HIBRIDO && fechaMatriculacion.plusYears(4).isAfter(LocalDate.now())) {
+			importe = importe * 0.25;
+		}
+		else if (motor == TipoMotor.GAS && fechaMatriculacion.plusYears(1).isAfter(LocalDate.now())) {
+			importe = importe * 0.5;
+		}
+		
+		return importe;
+	}
 
 }
