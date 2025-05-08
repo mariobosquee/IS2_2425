@@ -8,7 +8,7 @@ public abstract class Tarjeta {
 	protected String numero, titular, cvc;		
 	protected CuentaAhorro cuentaAsociada;
 
-	public Tarjeta(String numero, String titular, String cvc,
+	protected Tarjeta(String numero, String titular, String cvc,
 			CuentaAhorro cuentaAsociada) { //WMC + 1 = 1
 		this.numero = numero;
 		this.titular = titular;
